@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Portfolio
 My Portfolio Site
 =======

@@ -399,7 +399,7 @@ const ContactSection = () => {
                   className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-6 border border-blue-500/20"
                 >
                   <h4 className="text-white font-semibold text-lg mb-3 flex items-center gap-2">
-                    Quick Response Promise
+                    Quick Responses
                     <motion.img 
                       src="https://img.icons8.com/?size=20&id=phOKFKYpe00C&format=png&color=4ade80" 
                       alt="check circle"

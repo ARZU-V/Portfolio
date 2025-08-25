@@ -23,7 +23,11 @@ const ProjectsSection = () => {
   const [visibleProjects, setVisibleProjects] = useState(6); // Initial number of projects to show
   const [loading, setLoading] = useState(false);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  
+  // ✅ FIX: Lowered the 'amount' from 0.3 to 0.1.
+  // This ensures the animation triggers on mobile screens where 30% of the
+  // component might not be visible at once.
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   // Mobile detection with more breakpoints
   useEffect(() => {
@@ -300,9 +304,9 @@ const ProjectsSection = () => {
       id="projects"
     >
       {/* Animated background grid */}
-      <div className="absolute inset-0  z-10">
-    <BackgroundBeams />
-  </div>
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <BackgroundBeams />
+      </div>
 
       {/* Dynamic mouse-based gradient (desktop only) */}
       {!isMobile && (

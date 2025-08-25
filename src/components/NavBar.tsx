@@ -194,20 +194,21 @@ export const SlideTabs = () => {
 
         {/* Mobile Menu Button */}
         <motion.button
-          className="lg:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-colors duration-200"
-          onClick={toggleMobileMenu}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          <img
-            src={isMobileMenuOpen ? close : menu}
-            alt={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            className="h-6 w-6"
-            style={{ filter: "invert(1)" }}
-          />
-        </motion.button>
+  className="lg:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-colors duration-200"
+  onClick={toggleMobileMenu}
+  whileTap={{ scale: 0.95 }}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.4 }}
+>
+  <img
+    src={isMobileMenuOpen ? close : menu}
+    alt={isMobileMenuOpen ? "Close menu" : "Open menu"}
+    className="h-6 w-6"
+    style={{ filter: "brightness(0) invert(1)" }}
+  />
+</motion.button>
+
       </div>
 
       {/* Mobile Menu */}

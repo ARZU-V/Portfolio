@@ -300,7 +300,9 @@ const ProjectsSection = () => {
       id="projects"
     >
       {/* Animated background grid */}
-      <BackgroundBeams />
+      <div className="absolute inset-0  z-10">
+    <BackgroundBeams />
+  </div>
 
       {/* Dynamic mouse-based gradient (desktop only) */}
       {!isMobile && (
@@ -312,7 +314,7 @@ const ProjectsSection = () => {
         />
       )}
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"

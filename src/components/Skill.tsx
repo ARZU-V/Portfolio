@@ -366,7 +366,7 @@ const Skills = () => {
         </h1>
 
         <div className="click-indicator">
-          🖱️ Click on any skill to view projects
+          🖱️ Click on any skill
         </div>
 
         <div

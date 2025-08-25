@@ -131,7 +131,7 @@ export const SlideTabs = () => {
                 ARZU
               </h1>
               <span className="text-gray-300 text-sm font-medium mt-1">
-                | Build-it-All Coder
+                | I Use Arch Btw :{")"}
               </span>
             </div>
           </Link>
@@ -167,7 +167,7 @@ export const SlideTabs = () => {
         {/* Resume Button - Right Corner */}
         <div className="hidden lg:block">
           <motion.a
-            href="/resume.pdf"
+            href="/ArjitVerma__.pdf"
             download
             className="relative overflow-hidden bg-white text-black px-6 py-3 rounded-lg font-semibold text-sm tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 block"
             whileHover={{ scale: 1.05 }}

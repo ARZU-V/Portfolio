@@ -93,11 +93,16 @@ const HeroSection = () => {
       id="hero"
     >
       <div className="relative">
-        <div className="w-20 h-20 border-4 border-gray-700/30 rounded-full"></div>
-        <div className="absolute top-0 left-0 w-20 h-20 border-4 border-t-blue-400 border-r-purple-400 rounded-full animate-spin"></div>
+        <img
+          src="src/assets/anim.gif"
+          alt="Loading..."
+          className="w-40 h-40 object-contain"
+        />
       </div>
       <div className="text-center space-y-2">
-        <p className="text-gray-300 text-xl font-medium">Loading Experience</p>
+        <p className="text-gray-300 text-xl font-medium">
+          Arjit Verma Portfolio
+        </p>
         <p className="text-gray-500 text-sm">Preparing 3D environment...</p>
       </div>
     </div>
@@ -137,7 +142,7 @@ const HeroSection = () => {
       </motion.div>
 
       {/* FIXED: Static positioned main container */}
-      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 min-h-screen relative">
+      <div className="container mx-auto px-20 sm:px-6  min-h-screen relative">
         <motion.div
           className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen"
           variants={containerVariants}
@@ -145,7 +150,7 @@ const HeroSection = () => {
           animate={isContentVisible ? "visible" : "hidden"}
         >
           {/* Left Content Section */}
-          <div className=" pl-20 flex items-center justify-center lg:justify-start">
+          <div className=" lg:pl-20 pt-20 flex items-center justify-center lg:justify-start">
             <div className="space-y-8 text-center lg:text-left max-w-2xl">
               {/* Greeting */}
               <motion.div variants={itemVariants}>
@@ -198,10 +203,12 @@ const HeroSection = () => {
               </motion.div>
 
               {/* CTA Buttons */}
+              
               <motion.div
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 pt-4"
               >
+                <a href="/#projects">
                 <motion.button
                   className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-shadow"
                   whileHover={{ scale: 1.05 }}
@@ -209,6 +216,8 @@ const HeroSection = () => {
                 >
                   View My Work
                 </motion.button>
+                </a>
+                <a href="#contact">
                 <motion.button
                   className="px-8 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-colors"
                   whileHover={{ scale: 1.05 }}
@@ -216,27 +225,34 @@ const HeroSection = () => {
                 >
                   Get In Touch
                 </motion.button>
+                </a>
               </motion.div>
+              
             </div>
           </div>
 
           {/* FIXED: 3D Model Section with fixed positioning */}
           <motion.div
-            variants={modelVariants}
-            className="flex items-center justify-center relative"
-          >
-            {/* FIXED: Absolutely positioned canvas container to prevent layout shifts */}
-            <div className="w-full aspect-square max-w-[600px] max-h-[600px] relative">
-              <div className="absolute inset-0">
-                <HeroModelCanvas
-                  path="/planet.glb"
-                  scale={isMobile ? 0.8 : 1.2}
-                  position={[0, 0, 0]}
-                  onLoad={handleModelLoad}
-                />
-              </div>
-            </div>
-          </motion.div>
+  variants={modelVariants}
+  className="flex items-center justify-center relative"
+>
+  <div className="w-full aspect-square max-w-[600px] max-h-[600px] relative">
+    <div
+  className={`absolute inset-0 ${
+    isMobile ? "pointer-events-none z-0" : "z-10"
+  }`}
+>
+  <HeroModelCanvas
+    path="/planet.glb"
+    scale={isMobile ? 1 : 1.2}
+    position={[0, 0, 0]}
+    onLoad={handleModelLoad}
+  />
+</div>
+
+  </div>
+</motion.div>
+
         </motion.div>
       </div>
 

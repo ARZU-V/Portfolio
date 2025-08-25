@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BackgroundBeams } from "./ui/Background";
 import "../styles/fonts.css";
 import { motion, useInView } from "framer-motion";
+import logo from "../assets/image.png"; // Removed unused image import
 // Mock BackgroundBeams component for demonstration
 
 interface CustomStyle extends React.CSSProperties {
@@ -21,7 +22,7 @@ const Skills = () => {
       image:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg",
       name: "Godot",
-      github: "https://github.com/yourusername/godot-projects",
+      github: "https://streamitbroski.vercel.app/watch/687955bc43cb644a4b68e941",
     },
     {
       image:
@@ -40,43 +41,42 @@ const Skills = () => {
       image:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
       name: "HTML/CSS/JS",
-      github: "https://github.com/yourusername/web-projects",
+      github: "https://lissajouscurves.onrender.com/",
     },
     {
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-      name: "Firebase",
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+      name: "Supabase",
       github: "https://github.com/yourusername/firebase-projects",
     },
     {
       image:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
       name: "MongoDB",
-      github: "https://github.com/yourusername/mongodb-projects",
+      github: "https://streamitbroski.vercel.app/",
     },
     {
       image:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
       name: "Express",
-      github: "https://github.com/yourusername/express-projects",
+      github: "https://streamitbroski.vercel.app/",
     },
     {
       image:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       name: "React",
-      github: "https://github.com/yourusername/react-projects",
+      github: "https://github.com/ARZU-V/Naukri-Wala-Sem-Project.git",
     },
     {
       image:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       name: "Node.js",
-      github: "https://github.com/yourusername/nodejs-projects",
+      github: "https://streamitbroski.vercel.app/",
     },
     {
       image:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
       name: "Python",
-      github: "https://github.com/yourusername/python-projects",
+      github: "https://www.kaggle.com/code/arjitverma69/analysischat",
     },
   ];
 
@@ -343,10 +343,10 @@ const Skills = () => {
         }
       `}</style>
 
-      <div className="banner" id="skills">
+      <div className="banner py-20" id="skills">
         <BackgroundBeams />
 
-        <h1 className="skills-title">
+        <h1 className="skills-title py-20">
           <motion.div variants={itemVariants} className="text-center mb-16">
             <motion.h2
               className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"

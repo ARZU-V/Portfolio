@@ -7,6 +7,7 @@ import { BackgroundBeams,} from './components/ui/Background'
 import Skill from './components/Skill'
 import AboutSection from './components/AboutMeSection'
 import ProjectsSection from './components/ProjectsSection'
+import ContactSection from './components/Contact'
 
 export default function App() {
   return (
@@ -21,16 +22,8 @@ export default function App() {
       <AboutSection></AboutSection>
      <Skill></Skill>
      <ProjectsSection></ProjectsSection>
-          {/* <Hero />
-        </div>
-        <About />
-        <Experience />
-        <Tech />
-        <Works />
-        <Feedbacks />
-        <div className='relative z-0'>
-          <Contact />
-          <StarsCanvas /> */}
+     <ContactSection></ContactSection>
+        
     </div>
     </BrowserRouter>
   )

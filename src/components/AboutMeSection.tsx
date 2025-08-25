@@ -91,10 +91,10 @@ const AboutSection = () => {
       icon: "🎓",
     },
     {
-      title: "Hackathon Participant",
-      place: "Various Events",
+      title: "Hackathon Tech Member",
+      place: "College Event",
       description:
-        "Active in coding competitions and hackathons, building innovative solutions under pressure and tight deadlines.",
+        "Helped in technical issues that the teams were facing",
       icon: "⚡",
     },
     {
@@ -116,7 +116,7 @@ const AboutSection = () => {
   return (
     <section
       ref={ref}
-      className="font-myfont relative min-h-screen bg-black overflow-hidden py-20"
+      className="font-myfont relative min-h-screen bg-black overflow-hidden"
       id="about"
     >
       {/* Background Effects */}
@@ -181,7 +181,7 @@ const AboutSection = () => {
 
                   <p>
                     Whether it's backend stuff like APIs, databases, or spinning
-                    up a Firebase project, or frontend magic with React and
+                    up a Supabase project, or frontend magic with React and
                     animations — I enjoy building things that work{" "}
                     <span className="text-cyan-400 font-semibold">and</span>{" "}
                     look good.
@@ -192,12 +192,17 @@ const AboutSection = () => {
                     <span className="text-blue-400">hackathons</span>,{" "}
                     <span className="text-purple-400">tech clubs</span>, and{" "}
                     <span className="text-cyan-400">team projects</span>, always
-                    learning something new (or breaking something new 😅). I
+                    learning something new (or breaking something new). I
                     live for that{" "}
                     <span className="text-green-400 font-semibold">
                       "it finally works!"
                     </span>{" "}
-                    moment.
+                    moment.{" "}
+                    
+                  </p>
+                  <p>
+                    <span>I use arch btw.
+                  </span>
                   </p>
                 </div>
               </div>

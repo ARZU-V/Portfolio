@@ -269,7 +269,7 @@ export const SlideTabs = () => {
                   transition={{ delay: navLinks.length * 0.05 + 0.1 }}
                 >
                   <motion.a
-                    href="/resume.pdf"
+                    href="/ArjitVerma__.pdf"
                     download
                     className="w-full bg-white text-black px-6 py-4 rounded-lg font-semibold text-sm tracking-wide shadow-lg block text-center"
                     whileHover={{ scale: 1.02 }}

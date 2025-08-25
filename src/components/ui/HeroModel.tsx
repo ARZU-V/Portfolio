@@ -1,6 +1,6 @@
 import { useEffect, useRef, Suspense, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment, Float } from "@react-three/drei";
+import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
 interface HeroModelProps {
@@ -19,7 +19,6 @@ const Model = ({
   const gltf = useGLTF(path, true);
   const modelRef = useRef<THREE.Group>(null);
   const scene = useMemo(() => gltf.scene.clone(), [gltf.scene]);
-
   const hasLogged = useRef(false);
   const hasCalledOnLoad = useRef(false);
 
@@ -28,7 +27,6 @@ const Model = ({
     if (modelRef.current) {
       // Consistent rotation speed
       modelRef.current.rotation.y += 0.003;
-
       // FIXED: Keep model at fixed position - no floating animation
       modelRef.current.position.set(position[0], position[1], position[2]);
     }
@@ -39,16 +37,15 @@ const Model = ({
       console.log("🔍 Loading model from:", path);
       hasLogged.current = true;
     }
-
-    // Optimize materials
+    // Optimize materials and disable unnecessary features
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        child.castShadow = true;
-        child.receiveShadow = true;
-
+        child.castShadow = false; // Disable shadows for performance
+        child.receiveShadow = false;
         if (child.material) {
           child.material.transparent = false;
           child.material.alphaTest = 0.1;
+          child.material.needsUpdate = true; // Ensure material updates are applied
         }
       }
     });
@@ -78,13 +75,11 @@ const StableCamera = () => {
   useEffect(() => {
     if (!isInitialized.current) {
       const cam = camera as THREE.PerspectiveCamera;
-
       // Set camera once and never change it
       cam.fov = 25;
       cam.position.set(2, 1.5, 8);
       cam.aspect = size.width / size.height;
       cam.updateProjectionMatrix();
-
       isInitialized.current = true;
     }
   }, []); // Empty dependency array - only run once
@@ -95,24 +90,20 @@ const StableCamera = () => {
 const Lights = () => {
   return (
     <>
+      {/* Optimized lights for performance */}
       <ambientLight intensity={0.4} color="#ffffff" />
-
       <directionalLight
         position={[5, 5, 5]}
-        intensity={1.0}
+        intensity={0.8} // Reduced intensity
         color="#ffffff"
-        castShadow
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
+        castShadow={false} // Disable shadows for performance
       />
-
       <directionalLight
         position={[-3, 2, -5]}
-        intensity={0.4}
+        intensity={0.3} // Reduced intensity
         color="#4F46E5"
       />
-
-      <pointLight position={[8, 8, 8]} intensity={0.3} color="#06B6D4" />
+      {/* Removed point light for performance */}
     </>
   );
 };
@@ -122,8 +113,8 @@ const FallbackComponent = () => {
 
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.5;
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.3; // Slower rotation
+      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.2;
     }
   });
 
@@ -133,8 +124,8 @@ const FallbackComponent = () => {
       <meshStandardMaterial
         color="#4F46E5"
         wireframe
-        transparent
-        opacity={0.6}
+        transparent={false} // Disable transparency for performance
+        opacity={1}
       />
     </mesh>
   );
@@ -146,12 +137,10 @@ const HeroModelCanvas = (props: HeroModelProps) => {
 
   useEffect(() => {
     useGLTF.preload(props.path);
-
     if (!hasLoggedMount.current) {
       console.log("🟢 HeroModelCanvas mounted with stable positioning");
       hasLoggedMount.current = true;
     }
-
     return () => {
       if (hasLoggedMount.current) {
         console.log("🔴 HeroModelCanvas unmounted");
@@ -170,21 +159,20 @@ const HeroModelCanvas = (props: HeroModelProps) => {
         far: 1000,
       }}
       gl={{
-        preserveDrawingBuffer: true,
+        preserveDrawingBuffer: false, // Disable for performance
         antialias: true,
         alpha: true,
         powerPreference: "high-performance",
         stencil: false,
         depth: true,
       }}
-      shadows
-      dpr={[1, 1.5]}
+      shadows={false} // Disable shadows for performance
+      dpr={[1, 1.5]} // Limit device pixel ratio
       // FIXED: Use always render mode for stable positioning
       frameloop="always"
     >
       <Lights />
-
-      <Environment preset="night" environmentIntensity={0.3} />
+      <Environment preset="night" environmentIntensity={0.2} /> {/* Reduced intensity */}
 
       <Suspense fallback={<FallbackComponent />}>
         {/* FIXED: Removed Float component entirely to prevent position changes */}

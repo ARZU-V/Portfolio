@@ -119,7 +119,7 @@ const ProjectsSection = () => {
     },
     {
       id: 2,
-      title: "Student Erp System",
+      title: "Student ERP System",
       description:
         "A project to bridge the gap between the students and employers",
       tech: ["React", "TypeScript", "Prisma", "Chart.js","Python","Node","Express"],

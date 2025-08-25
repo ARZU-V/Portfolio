@@ -4,6 +4,7 @@ import { BackgroundBeams } from "./ui/Background";
 import HeroModelCanvas from "./ui/HeroModel";
 import "../styles/fonts.css";
 import "../App.css";
+
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [isMobile, setIsMobile] = useState(false);
@@ -15,7 +16,6 @@ const HeroSection = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -24,14 +24,12 @@ const HeroSection = () => {
   // Mouse tracking for background effect
   useEffect(() => {
     if (isMobile) return;
-
     const handleMouseMove = (e) => {
       setMousePosition({
         x: (e.clientX / window.innerWidth) * 100,
         y: (e.clientY / window.innerHeight) * 100,
       });
     };
-
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isMobile]);
@@ -44,7 +42,7 @@ const HeroSection = () => {
     }, 300);
   }, []);
 
-  // FIXED: Simplified animation variants without scroll-interfering transforms
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -72,7 +70,6 @@ const HeroSection = () => {
     },
   };
 
-  // FIXED: Stable model variants without scale changes
   const modelVariants = {
     hidden: {
       opacity: 0,
@@ -86,27 +83,37 @@ const HeroSection = () => {
     },
   };
 
-  // Loading spinner component
-  const LoadingSpinner = () => (
-    <div
-      className="flex flex-col items-center justify-center space-y-6"
-      id="hero"
-    >
-      <div className="relative">
-        <img
-          src="src/assets/anim.gif"
-          alt="Loading..."
-          className="w-40 h-40 object-contain"
-        />
-      </div>
-      <div className="text-center space-y-2">
-        <p className="text-gray-300 text-xl font-medium">
-          Arjit Verma Portfolio
-        </p>
-        <p className="text-gray-500 text-sm">Preparing 3D environment...</p>
-      </div>
+  // Framer Motion Loading Animation
+const LoadingSpinner = () => (
+  <div className="flex flex-col items-center justify-center space-y-6" id="hero">
+    {/* Dot Wave Animation */}
+    <div className="flex space-x-1">
+      <motion.div
+        className="w-3 h-3 bg-blue-400 rounded-full"
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="w-3 h-3 bg-purple-400 rounded-full"
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 0.6, repeat: Infinity, delay: 0.1, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="w-3 h-3 bg-cyan-400 rounded-full"
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 0.6, repeat: Infinity, delay: 0.2, ease: "easeInOut" }}
+      />
     </div>
-  );
+
+    {/* Loading Text */}
+    <div className="text-center space-y-2">
+      <p className="text-gray-300 text-xl font-medium">
+        Arjit Verma Portfolio
+      </p>
+      <p className="text-gray-500 text-sm">Preparing 3D environment...</p>
+    </div>
+  </div>
+);
 
   return (
     <section
@@ -115,7 +122,6 @@ const HeroSection = () => {
     >
       {/* Background Effects */}
       <BackgroundBeams />
-
       {/* Dynamic mouse-based gradient */}
       {!isMobile && (
         <div
@@ -141,8 +147,8 @@ const HeroSection = () => {
         <LoadingSpinner />
       </motion.div>
 
-      {/* FIXED: Static positioned main container */}
-      <div className="container mx-auto px-20 sm:px-6  min-h-screen relative">
+      {/* Main Container */}
+      <div className="container mx-auto px-20 sm:px-6 min-h-screen relative">
         <motion.div
           className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen"
           variants={containerVariants}
@@ -150,7 +156,7 @@ const HeroSection = () => {
           animate={isContentVisible ? "visible" : "hidden"}
         >
           {/* Left Content Section */}
-          <div className=" lg:pl-20 pt-20 flex items-center justify-center lg:justify-start">
+          <div className="lg:pl-20 pt-20 flex items-center justify-center lg:justify-start">
             <div className="space-y-8 text-center lg:text-left max-w-2xl">
               {/* Greeting */}
               <motion.div variants={itemVariants}>
@@ -182,7 +188,7 @@ const HeroSection = () => {
                 <h2 className="text-xl sm:text-2xl lg:text-3xl text-gray-300 font-medium leading-relaxed">
                   <span className="text-blue-400">Web Designer</span>
                   <span className="text-gray-400"> & </span>
-                  <span className="text-purple-400">Full Stack Developer </span>
+                  <span className="text-purple-400">Full Stack Developer</span>
                 </h2>
               </motion.div>
 
@@ -203,68 +209,64 @@ const HeroSection = () => {
               </motion.div>
 
               {/* CTA Buttons */}
-              
               <motion.div
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 pt-4"
               >
                 <a href="/#projects">
-                <motion.button
-                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-shadow"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  View My Work
-                </motion.button>
+                  <motion.button
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-shadow"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    View My Work
+                  </motion.button>
                 </a>
                 <a href="#contact">
-                <motion.button
-                  className="px-8 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Get In Touch
-                </motion.button>
+                  <motion.button
+                    className="px-8 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Get In Touch
+                  </motion.button>
                 </a>
               </motion.div>
-              
             </div>
           </div>
 
-          {/* FIXED: 3D Model Section with fixed positioning */}
+          {/* 3D Model Section */}
           <motion.div
-  variants={modelVariants}
-  className="flex items-center justify-center relative"
->
-  <div className="w-full aspect-square max-w-[600px] max-h-[600px] relative">
-    <div
-  className={`absolute inset-0 ${
-    isMobile ? "pointer-events-none z-0" : "z-10"
-  }`}
->
-  <HeroModelCanvas
-    path="/planet.glb"
-    scale={isMobile ? 1 : 1.2}
-    position={[0, 0, 0]}
-    onLoad={handleModelLoad}
-  />
-</div>
-
-  </div>
-</motion.div>
-
+            variants={modelVariants}
+            className="flex items-center justify-center relative"
+          >
+            <div className="w-full aspect-square max-w-[600px] max-h-[600px] relative">
+              <div
+                className={`absolute inset-0 ${
+                  isMobile ? "pointer-events-none z-0" : "z-10"
+                }`}
+              >
+                <HeroModelCanvas
+                  path="/planet.glb"
+                  scale={isMobile ? 1 : 1.2}
+                  position={[0, 0, 0]}
+                  onLoad={handleModelLoad}
+                />
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* FIXED: Scroll Indicator with fixed positioning */}
+      {/* Scroll Indicator */}
       {!isMobile && isContentVisible && (
         <motion.div
           className="fixed bottom-8 left-1/2 z-20"
-          style={{ transform: "translateX(-50%)" }} // Use style instead of Tailwind transform
+          style={{ transform: "translateX(-50%)" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5, duration: 0.8 }}
-        ></motion.div>
+        />
       )}
     </section>
   );

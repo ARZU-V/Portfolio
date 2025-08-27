@@ -199,7 +199,7 @@ const ProjectsSection = () => {
       id: 8,
       title: "Chat Application",
       description:
-        "A timer that judges you for procrastinating. Ironically took 3 months to build.",
+        "A simple Chat application with file transfer and chatting",
       tech: ["Nextjs", "Redis", "TypeScript", "Supabase"],
       image:
         "https://plus.unsplash.com/premium_photo-1720032304972-1f1142e73253?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

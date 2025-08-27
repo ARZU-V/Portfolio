@@ -264,7 +264,7 @@ const ContactSection = () => {
       iconUrl: "https://img.icons8.com/?size=100&id=32292&format=png&color=000000",
       color: "from-pink-500 to-purple-600",
       hoverColor: "hover:shadow-pink-500/25",
-      description: "Behind the scenes content",
+      description: "Connect With Me",
     },
   ];
 
@@ -617,7 +617,7 @@ const ContactSection = () => {
                     >
                       <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="currentColor"/>
                     </motion.svg>
-                    Powered by creativity & innovation ✨
+                   
                   </span>
                 </div>
               </motion.div>

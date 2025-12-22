@@ -167,7 +167,7 @@ export const SlideTabs = () => {
         {/* Resume Button - Right Corner */}
         <div className="hidden lg:block">
           <motion.a
-            href="/ArjitVerma__.pdf"
+            href="/Arjit_Verma_22_15.pdf"
             download
             className="relative overflow-hidden bg-white text-black px-6 py-3 rounded-lg font-semibold text-sm tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 block"
             whileHover={{ scale: 1.05 }}
@@ -269,7 +269,7 @@ export const SlideTabs = () => {
                   transition={{ delay: navLinks.length * 0.05 + 0.1 }}
                 >
                   <motion.a
-                    href="/ArjitVerma__.pdf"
+                    href="/Arjit_Verma_22_15.pdf"
                     download
                     className="w-full bg-white text-black px-6 py-4 rounded-lg font-semibold text-sm tracking-wide shadow-lg block text-center"
                     whileHover={{ scale: 1.02 }}
